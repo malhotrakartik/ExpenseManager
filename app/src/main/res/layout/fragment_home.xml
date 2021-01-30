@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_dimen"
+        android:layout_marginTop="@dimen/regular_dimen"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/large_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/btnSettings"
+        android:layout_width="@dimen/large_medium_dimen"
+        android:layout_height="@dimen/large_medium_dimen"
+        android:layout_marginEnd="@dimen/medium_dimen"
+        android:contentDescription="@string/settings"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintBottom_toBottomOf="@id/tvHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvHeader" />
+
+    <LinearLayout
+        android:id="@+id/linearBalance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/very_large_dimen"
+        android:background="@drawable/rectangle_round_background"
+        android:elevation="@dimen/tiny_dimen"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/regular_dimen"
+        app:layout_constraintBottom_toTopOf="@id/card"
+        app:layout_constraintEnd_toEndOf="@id/card"
+        app:layout_constraintStart_toStartOf="@id/card"
+        app:layout_constraintTop_toTopOf="@id/card">
+
+        <TextView
+            android:id="@+id/tvNetBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/regular_dimen"
+            android:text="@string/net_balance"
+            android:textAllCaps="true"
+            android:textColor="#FFF"
+            android:textSize="@dimen/medium_text_size" />
+
+        <TextView
+            android:id="@+id/tvNetBalanceVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFF"
+            android:textSize="@dimen/medium_text_size"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/medium_dimen"
+        android:layout_marginTop="@dimen/very_large_dimen"
+        app:cardCornerRadius="@dimen/regular_dimen"
+        app:layout_constraintTop_toBottomOf="@id/tvHeader">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:paddingVertical="@dimen/large_dimen">
+
+            <com.kartik.expensemanager.ui.customviews.PieChart
+                android:id="@+id/pie"
+                android:layout_width="@dimen/extra_huge_dimen"
+                android:layout_height="@dimen/extra_huge_dimen"
+                android:layout_marginEnd="@dimen/regular_dimen"
+                android:padding="@dimen/regular_dimen"
+                android:visibility="gone"
+                app:arcSize="@dimen/medium_dimen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvCash"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvCash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/regular_dimen"
+                android:textColor="@color/colorCash"
+                android:textSize="@dimen/normal_text_size"
+                app:layout_constraintBottom_toTopOf="@id/tvCredit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/pie"
+                app:layout_constraintTop_toTopOf="@id/pie"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tvCredit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorCredit"
+                android:textSize="@dimen/normal_text_size"
+                app:layout_constraintBottom_toTopOf="@id/tvCheque"
+                app:layout_constraintStart_toStartOf="@id/tvCash"
+                app:layout_constraintTop_toBottomOf="@id/tvCash" />
+
+            <TextView
+                android:id="@+id/tvCheque"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorCheque"
+                android:textSize="@dimen/normal_text_size"
+                app:layout_constraintBottom_toTopOf="@id/tvOther"
+                app:layout_constraintStart_toStartOf="@id/tvCredit"
+                app:layout_constraintTop_toBottomOf="@id/tvCredit" />
+
+            <TextView
+                android:id="@+id/tvOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorOtherPays"
+                android:textSize="@dimen/normal_text_size"
+                app:layout_constraintBottom_toBottomOf="@id/pie"
+                app:layout_constraintStart_toStartOf="@id/tvCheque"
+                app:layout_constraintTop_toBottomOf="@id/tvCheque" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/regular_dimen"
+        android:layout_marginBottom="@dimen/regular_dimen"
+        android:contentDescription="@string/add_tran"
+        android:src="@drawable/ic_add"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="@id/card"
+        app:layout_constraintEnd_toEndOf="@id/card"
+        app:layout_constraintStart_toStartOf="@id/card"
+        app:layout_constraintTop_toBottomOf="@id/card"
+        app:tint="#FFFFFF" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="@dimen/larger_dimen"
+        android:layout_height="@dimen/larger_dimen"
+        android:layout_marginBottom="@dimen/huge_dimen"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHeader" />
+
+    <TextView
+        android:id="@+id/tvUpcoming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_dimen"
+        android:text="@string/up_trans"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/medium_text_size"
+        app:layout_constraintStart_toStartOf="@id/card"
+        app:layout_constraintTop_toBottomOf="@id/btnAdd" />
+
+    <TextView
+        android:id="@+id/btnViewAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/regular_dimen"
+        android:text="@string/view_all"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/default_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/tvUpcoming"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerUpcoming"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/regular_dimen"
+        app:layout_constraintTop_toBottomOf="@id/tvUpcoming" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/small_dimen"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+</androidx.constraintlayout.widget.ConstraintLayout>
